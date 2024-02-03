@@ -1,0 +1,15 @@
+{{ define "content" }}
+<h2>Todo List</h2>
+<form method="POST" action="/new">
+    <input type="text" name="title" placeholder="Add a new todo">
+    <button type="submit">Add</button>
+</form>
+<ul>
+    {{ range . }}
+    <li>
+        <a href="/done/{{ .ID }}">{{ .Title }}</a>
+        {{ if .Done }}(Done){{ end }}
+    </li>
+    {{ end }}
+</ul>
+{{ end }}
